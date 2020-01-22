@@ -1,70 +1,76 @@
+#include <string>
 #include <iostream>
-#include <cstdlib>
-#include <math.h>
-#include <string.h>
-#include <conio.h>
+#include<cstdlib>
+#include <iomanip>
+#include <vector>
 #include <stdio.h>
-#include <stdlib.h>
 
 using namespace std;
 
-void dataPrint(string name, string surname, string status)
-{
-    printf("Name: %s\n", name.c_str());
-    printf("Surname: %s\n", surname.c_str());
-    printf("Status: %s\n\n", status.c_str());
-}
-
 class Cook
 {
-public:
-    string name, surname;
+//public:
+//    string name, surname;
 
-    void cooking()
-    {
-        printf("\nStudents successfully ate in the dining room!\n");
-    }
+//    void cooking()
+ //   {
+//        printf("\nStudents successfully ate in the dining room!\n");
+ //   }
 
-    Cook(string name, string surname)
-    {
-        this -> name = name;
-        this -> surname = surname;
-    }
+//    Cook(string name, string surname)
+//    {
+//        this -> name = name;
+//        this -> surname = surname;
+ //   }
 
 };
 
 class Security
 {
-public:
-    string name, surname;
+//public:
+ //   string name, surname;
 
-    void protect()
-    {
-        printf("\nThe school is guarded!\n");
-    }
+ //   void protect()
+  //  {
+  //      printf("\nThe school is guarded!\n");
+   // }
 
-    Security(string name, string surname)
-    {
-        this -> name = name;
-        this -> surname = surname;
-    }
+  //  Security(string name, string surname)
+  //  {
+   //     this -> name = name;
+   //     this -> surname = surname;
+  //  }
 
 };
 
 class Cleaner
 {
+//public:
+//    string name, surname;
+
+   // void clean()
+  //  {
+   //     printf("\nSuccessful cleaning!\n");
+//    }
+
+//    Cleaner(string name, string surname)
+//    {
+//        this -> name = name;
+//        this -> surname = surname;
+//    }
+
+};
+
+class Teacher
+{
 public:
-    string name, surname;
+    string name, surname, numberAndLetterOfClassroom;
 
-    void clean()
-    {
-        printf("\nSuccessful cleaning!\n");
-    }
-
-    Cleaner(string name, string surname)
+    Teacher(string name, string surname, string numberAndLetterOfClassroom)
     {
         this -> name = name;
         this -> surname = surname;
+        this -> numberAndLetterOfClassroom = numberAndLetterOfClassroom;
     }
 
 };
@@ -72,130 +78,140 @@ public:
 class Student
 {
 public:
-    string name, surname, numberOfClassroom, letterOfClassroom;
-    int art, biology, chemistry, english, geography, history, literature, math;
+    string name, surname;
     float averageBallOfStudent;
 
     Student()
     {
-        name = surname = numberOfClassroom = letterOfClassroom = "None";
+        name = surname = "None";
     }
 
-    void setNameSurnameClass(string numeStud, string surnameStud, string numClassStut, string letClassStud)
+    void setBall(float averageBallOfStudent)
     {
-      name = numeStud;
-      surname = surnameStud;
-      numberOfClassroom = numClassStut;
-      letterOfClassroom = letClassStud;
-    }
-
-    void setBall(int artBall, int biologyBall, int chemistryBall, int englishBall, int geographyBall, int historyBall, int literatureBall, int mathBall)
-    {
-        artBall = art;
-        biologyBall = biology;
-        chemistryBall = chemistry;
-        englishBall = english;
-        geographyBall = geography;
-        historyBall = history;
-        literatureBall = literature;
-        mathBall = math;
-    }
-
-    int getBall()
-    {
-      return art;
 
     }
 
-    Student(string name, string surname, string numberOfClassroom, string letterOfClassroom)
+    Student(string name, string surname)
     {
         this -> name = name;
         this -> surname = surname;
-        this -> numberOfClassroom = numberOfClassroom;
-        this -> letterOfClassroom = letterOfClassroom;
-        this -> geography = geography;
-        this -> english = english;
-        this -> chemistry = chemistry;
-        this -> biology = biology;
-        this -> art = art;
-        this -> history = history;
-        this -> literature = literature;
-        this -> math = math;
-        averageBallOfStudent = (art + biology + chemistry + english + geography + history + literature + math)/8.0;
+        this -> averageBallOfStudent = averageBallOfStudent;
     }
 
 };
 
 class Classroom
 {
-public:
-    string numberOfClassroom, letterOfClassroom, day;
-    int quantityOfPupils, quantityOfLessons;
+private:
+    string classroom;
+    string teacher;
+    int students;
+    double averageBall;
 
-    void setStudentsBall(Student listOfStudents)
+public:
+    string numberAndLetterOfClassroom;
+    int quantityOfPupils;
+    Classroom();
+    void getAll();
+    void setAll();
+    void table();
+
+    void setAverageBallOfClass()
     {
-        listOfStudents.setBall(1 + rand() % 5, 1 + rand() % 5, 1 + rand() % 5, 1 + rand() % 5, 1 + rand() % 5, 1 + rand() % 5, 1 + rand() % 5, 1 + rand() % 5);
     }
 
     Classroom(string numberOfClassroom, string letterOfClassroom)
     {
-        this -> numberOfClassroom = numberOfClassroom;
-        this -> letterOfClassroom = letterOfClassroom;
-        this -> quantityOfLessons = quantityOfLessons;
+        this -> numberAndLetterOfClassroom = numberAndLetterOfClassroom;
         this -> quantityOfPupils = quantityOfPupils;
     }
 
 };
 
-class Teacher
+Classroom::Classroom()
 {
-public:
-    string name, surname, numberOfClassroom, letterOfClassroom;
+    classroom = "1A";
+    teacher = "Anna Guseva";
+    students = 0;
+    averageBall = 0;
+}
 
-    void teach(string numberOfClassroom, string letterOfClassroom)
+void Classroom::table()
+{
+    cout<<endl;
+    cout<<"||===========||=================================||================================||=============||"<<endl;
+    cout<<"|| Classroom ||             Teacher             ||        Quantity Of Pupils      || AverageBall ||"<<endl;
+    cout<<"||===========||=================================||================================||=============||"<<endl;
+}
+
+void Classroom::getAll()
+{
+    cout << "||";
+    if (classroom.length()%2==0)
     {
-        printf("\nThe lesson in %s%s class was successfully conducted!\n", numberOfClassroom.c_str(), letterOfClassroom.c_str());
+        cout<<setw((11-classroom.length())/2+classroom.length())<<classroom<<setw((11-classroom.length())/2+3)<<"||";
     }
-
-    Teacher(string name, string surname, string numberOfClassroom, string letterOfClassroom)
+    else
     {
-        this -> name = name;
-        this -> surname = surname;
-        this -> numberOfClassroom = numberOfClassroom;
-        this -> letterOfClassroom = letterOfClassroom;
+        cout<<setw((11-classroom.length())/2+classroom.length())<<classroom<<setw((11-classroom.length())/2+2)<<"||";
     }
+    if (teacher.length()%2==0)
+    {
+        cout<<setw((33-teacher.length())/2+teacher.length())<<teacher<<setw((32-teacher.length())/2+2)<<"||";
+    }
+    else
+    {
+        cout<<setw((33-teacher.length())/2+teacher.length())<<teacher<<setw((32-teacher.length())/2+3)<<"||";
+    }
+    cout<<setw(32)<<fixed<<setprecision(2)<<students<<"||";
+    cout<<setw(13)<<averageBall<<"||";
+    cout<<endl<<"||===========||=================================||================================||=============||"<<endl;
+}
 
-};
-
+void Classroom::setAll()
+{
+    cout << "Classroom Name: "; cin >> classroom;
+    cout << "Teacher Of Classroom (Initials and last name): "; cin >> teacher;
+    cout << "Quantity Of Pupils: "; cin >> students;
+    cout << "Average Ball Of Class(2.00 - 5.00): "; cin >> averageBall;
+}
 
 class Administration
 {
+private:
+    string name;
+    string surname;
+    string status;
+
 public:
-    //void dismissAnEmployee(string nameOfObject)
-    //{
-        //delete nameOfObject;
-        //printf("Employee %s was fired!", nameOfObject.c_str());
-    //}
+    void Menu();
 
-    string name, surname, status;
-
-    Administration(string name, string surname, string status)
+Administration(string name, string surname, string status)
     {
         this -> name = name;
         this -> surname = surname;
         this -> status = status;
     }
-
 };
+
+void Administration::Menu()
+{
+    cout << "Menu:" << endl;
+    cout << "1. View all classes of the school;" << endl;
+    cout << "2. Add class;" << endl;
+    cout << "3. Delete class;" << endl;
+    cout << "4. Leave school." << endl << endl;
+}
 
 
 int main()
 {
+    system("title The administration of the school");
+
     string nameAdmin, surnameAdmin, statusAdmin;
-    string nameTeacher, surnameTeacher, numberOfClassroomTeacher, letterOfClassroomTeacher;
-    string nameStudent, surnameStudent, numberOfClassroomStudent, letterOfClassroomStudent;
-    string nameSecurity, surnameSecurity, nameCleaner, surnameCleaner, nameCook, surnameCook;
-    string quantityOfPupilsClassroom;
+    string nameTeacher, surnameTeacher, numberAndLetterOfClassroomTeacher;
+    string nameStudent, surnameStudent, numberAndLetterOfClassroomStudent;
+    int quantityOfPupils;
 
     printf("Welcome! Let's create a school!\n");
     printf("First create a Administration.\n\n");
@@ -204,60 +220,55 @@ int main()
     cout << "Administration surname: "; cin >> surnameAdmin;
     cout << "Administration status(Director or head teacher or supply manager): "; cin >> statusAdmin;
     Administration Admin1(nameAdmin, surnameAdmin, statusAdmin);
-    printf("\nAdministrator %s successfully created!\n", nameAdmin.c_str());
+    printf("\nAdministrator %s successfully created!\n\n", nameAdmin.c_str());
 
-    printf("\n\nCreate a guard, cleaner and cook.\n");
 
-    cout << "Security name: "; cin >> nameSecurity;
-    cout << "Security surname: "; cin >> surnameSecurity;
-    Security Sec1(nameSecurity, surnameSecurity);
-    printf("\nSecurity %s successfully created!\n", nameSecurity.c_str());
-
-    cout << "\nCleaner name: "; cin >> nameCleaner;
-    cout << "Cleaner surname: "; cin >> surnameCleaner;
-    Cleaner Clean1(nameCleaner, surnameCleaner);
-    printf("\nCleaner %s successfully created!\n", nameCleaner.c_str());
-
-    cout << "\nCook name: "; cin >> nameCook;
-    cout << "Cook surname: "; cin >> surnameCook;
-    Cook Cook1(nameCook, surnameCook);
-    printf("\nCook %s successfully created!\n", nameCook.c_str());
-
-    printf("\n\nCreate a Teacher and his class.\n");
-
-    cout << "\nTeacher name: "; cin >> nameTeacher;
-    cout << "Teacher surname: "; cin >> surnameTeacher;
-    cout << "Number of Teacher's classroom(1-11): "; cin >> numberOfClassroomTeacher;
-    cout << "Letter of Teacher's classroom(A, B, C...): "; cin >> letterOfClassroomTeacher;
-    Teacher Teacher1(nameTeacher, surnameTeacher, numberOfClassroomTeacher, letterOfClassroomTeacher);
-    Classroom Class1(numberOfClassroomTeacher, letterOfClassroomTeacher);
-    printf("\nTeacher %s with class %s%s successfully created!\n", nameTeacher.c_str(), numberOfClassroomTeacher.c_str(), letterOfClassroomTeacher.c_str());
-
-    cout << "\nHow many students will be in this class?: "; cin >> quantityOfPupilsClassroom;
-    int num;
-    num = atoi(quantityOfPupilsClassroom.c_str());
-    Student Stud1[num];
-
-    numberOfClassroomStudent = numberOfClassroomTeacher;
-    letterOfClassroomStudent = letterOfClassroomTeacher;
-
-    printf("\nCreate a Students\n");
-    for (int i = 0; i < num; i++)
+    vector <Classroom> Classes;
+    vector <Student> Students;
+    Classroom objClass;
+    Student objStudent;
+    int enter = 0;
+    do
     {
-        cout << "Student name:"; cin >> nameStudent;
-        cout << "Student surname:\n"; cin >> surnameStudent;
-        Stud1[i].setNameSurnameClass(nameStudent, surnameStudent, numberOfClassroomStudent, letterOfClassroomStudent);
+        Admin1.Menu();
+        cin >> enter;
+        switch(enter)
+        {
+        case(1):
+            if (Classes.size() == 0)
+            {
+                cout << "\n\nThere is no classes in the school now. Create it!\n\n" << endl;
+            }
+            else
+            {
+                objClass.table();
+                for (vector <Classroom>::iterator p = Classes.begin();p != Classes.end(); ++p)
+                {
+                    p -> getAll();
+                }
+            }
+            break;
+
+        case(2):
+            objClass.setAll();
+            Classes.push_back(objClass);
+            cout << "Please, enter again quantity of pupils: "; cin >> quantityOfPupils;
+            for (int i = 0; i < quantityOfPupils; i++)
+            {
+                printf("\n\nCreate a Student.\n");
+
+                cout << "\nTeacher name: "; cin >> nameStudent;
+                cout << "Teacher surname: "; cin >> surnameStudent;
+                Students.push_back(Student (nameStudent, surnameStudent));
+                printf("\Student %s successfully created!\n", nameTeacher.c_str());
+            }
+            break;
+
+        case(3):
+            break;
+        }
+
     }
-
-
-    for (int i = 0; i < num; i++)
-    {
-        Class1.setStudentsBall(Stud1[i]);
-    }
-
-    for (int i = 0; i < num; i++)
-    {
-        cout << endl << Stud1[i].getBall() << endl;
-    }
-
+    while (enter != 4);
+    return 0;
 }
